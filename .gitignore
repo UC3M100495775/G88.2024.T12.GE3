@@ -4,3 +4,6 @@ venv
 
 # Ignore .idea folder
 .idea
+
+# Ignore folder for pybuilder
+target
