@@ -26,8 +26,8 @@ class HotelManager:
         res = myregex.fullmatch(x)
         if not res:
             raise HotelManagementException("Invalid credit card format")
-        def digits_of(n):
-            return [int(d) for d in str(n)]
+        def digits_of(number_string):
+            return [int(digit) for digit in str(number_string)]
 
 
         digits = digits_of(x)
