@@ -41,13 +41,7 @@ class HotelManager:
             raise HotelManagementException("Invalid credit card number (not luhn)")
         return x
 
-    def validate_room_type(self, room_type):
-        """validates the room type value using regex"""
-        myregex = re.compile(r"(SINGLE|DOUBLE|SUITE)")
-        res = myregex.fullmatch(room_type)
-        if not res:
-            raise HotelManagementException("Invalid roomtype value")
-        return room_type
+
 
     def validate_arrival_date(self, arrival_date):
         """validates the arrival date format  using regex"""
@@ -142,13 +136,14 @@ class HotelManager:
 
         self.validate_id_card(id_card)
 
-        room_type = self.validate_room_type(room_type)
+
 
         self.validate_name_surname(name_surname)
         credit_card = self.validatecreditcard(credit_card)
         arrival_date = self.validate_arrival_date(arrival_date)
         num_days = self.validate_numdays(num_days)
         phone_number = self.validate_phonenumber(phone_number)
+
         my_reservation = HotelReservation(id_card=id_card,
                                           credit_card_number=credit_card,
                                           name_surname=name_surname,

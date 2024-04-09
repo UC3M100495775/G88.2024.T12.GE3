@@ -1,6 +1,8 @@
 """Hotel reservation class"""
 import hashlib
 from datetime import datetime
+import re
+from .hotel_management_exception import HotelManagementException
 
 class HotelReservation:
     """Class for representing hotel reservations"""
@@ -21,9 +23,17 @@ class HotelReservation:
         self.__reservation_date = datetime.timestamp(justnow)
         self.__name_surname = name_surname
         self.__phone_number = phone_number
-        self.__room_type = room_type
+        self.__room_type = self.validate_room_type(room_type)
         self.__num_days = num_days
         self.__localizer =  hashlib.md5(str(self).encode()).hexdigest()
+
+    def validate_room_type(self, room_type):
+        """validates the room type value using regex"""
+        myregex = re.compile(r"(SINGLE|DOUBLE|SUITE)")
+        res = myregex.fullmatch(room_type)
+        if not res:
+            raise HotelManagementException("Invalid roomtype value")
+        return room_type
 
     def __str__(self):
         """return a json string with the elements required to calculate the localizer"""
