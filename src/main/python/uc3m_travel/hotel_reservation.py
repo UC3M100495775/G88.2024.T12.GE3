@@ -30,8 +30,8 @@ class HotelReservation:
     def validate_room_type(self, room_type):
         """validates the room type value using regex"""
         myregex = re.compile(r"(SINGLE|DOUBLE|SUITE)")
-        res = myregex.fullmatch(room_type)
-        if not res:
+        room_type_validation_result = myregex.fullmatch(room_type)
+        if not room_type_validation_result:
             raise HotelManagementException("Invalid roomtype value")
         return room_type
 

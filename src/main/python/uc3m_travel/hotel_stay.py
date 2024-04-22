@@ -10,7 +10,7 @@ class HotelStay():
                  numdays:int,
                  roomtype:str):
         """constructor for HotelStay objects"""
-        self.__alg = "SHA-256"
+        self.__algorithm = "SHA-256"
         self.__type = roomtype
         self.__idcard = idcard
         self.__localizer = localizer
@@ -23,7 +23,8 @@ class HotelStay():
 
     def __signature_string(self):
         """Composes the string to be used for generating the key for the room"""
-        return "{alg:" + self.__alg + ",typ:" + self.__type + ",localizer:" + \
+        return "{alg:" + self.__algorithm + ",typ:" + self.__type + \
+               ",localizer:" + \
             self.__localizer + ",arrival:" + str(self.__arrival) + \
             ",departure:" + str(self.__departure) + "}"
 
