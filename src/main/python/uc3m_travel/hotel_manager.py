@@ -136,7 +136,8 @@ class HotelManager:
                              room_type:str,
                              arrival_date: str,
                              num_days:int)->str:
-            """manges the hotel reservation: creates a reservation and saves it into a json file"""
+            """manages the hotel reservation: creates a reservation and
+            saves it into a json file"""
 
             self.validate_id_card(id_card)
 
@@ -169,12 +170,7 @@ class HotelManager:
             data_list.append(my_reservation.__dict__)
 
             #escribo la lista en el fichero
-            try:
-                with open(file_store, "w", encoding="utf-8", newline="") as file:
-                    json.dump(data_list, file, indent=2)
-            except FileNotFoundError as file_not_found_error:
-                raise HotelManagementException("Wrong file  or file path") \
-                    from file_not_found_error
+            self.write_json(file_store, data_list)
 
             return my_reservation.localizer
 
@@ -294,12 +290,7 @@ class HotelManager:
             #añado los datos de mi reserva a la lista , a lo que hubiera
             room_key_list.append(my_checkin.__dict__)
 
-            try:
-                with open(file_store, "w", encoding="utf-8", newline="") as file:
-                    json.dump(room_key_list, file, indent=2)
-            except FileNotFoundError as file_not_found_error:
-                raise HotelManagementException("Wrong file  or file path") \
-                    from file_not_found_error
+            self.write_json(file_store, room_key_list)
 
             return my_checkin.room_key
 
@@ -340,14 +331,8 @@ class HotelManager:
                 raise HotelManagementException("Error: today is not the departure day")
 
             file_store_checkout = JSON_FILES_PATH + "store_check_out.json"
-            try:
-                with open(file_store_checkout, "r", encoding="utf-8", newline="") as file:
-                    room_key_list = json.load(file)
-            except FileNotFoundError as file_not_found_error:
-                room_key_list = []
-            except json.JSONDecodeError as json_decode_error:
-                raise HotelManagementException("JSON Decode Error - Wrong "
-                                               "JSON Format") from json_decode_error
+
+            room_key_list = self.load_json_store(file_store_checkout)
 
             for checkout in room_key_list:
                 if checkout["room_key"] == room_key:
@@ -357,14 +342,21 @@ class HotelManager:
 
             room_key_list.append(room_checkout)
 
+            self.write_json(file_store_checkout, room_key_list)
+
+            return True
+
+        def write_json(self, file, list):
+            # Method for writing the data from the given
+            # data in the given file
             try:
-                with open(file_store_checkout, "w", encoding="utf-8", newline="") as file:
-                    json.dump(room_key_list, file, indent=2)
+                with open(file, "w", encoding="utf-8",
+                          newline="") as file:
+                    json.dump(list, file, indent=2)
             except FileNotFoundError as file_not_found_error:
                 raise HotelManagementException("Wrong file  or file path") \
                     from file_not_found_error
 
-            return True
     __instance = None;
     def __new__(cls):
         if not HotelManager.__instance:
