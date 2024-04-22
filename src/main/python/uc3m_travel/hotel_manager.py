@@ -6,6 +6,7 @@ from uc3m_travel.hotel_management_exception import HotelManagementException
 from uc3m_travel.hotel_reservation import HotelReservation
 from uc3m_travel.hotel_stay import HotelStay
 from uc3m_travel.hotel_management_config import JSON_FILES_PATH
+from uc3m_travel.attributes.attribute_phone_number import PhoneNumber
 from freezegun import freeze_time
 
 class HotelManager:
@@ -50,11 +51,8 @@ class HotelManager:
 
         def validate_phonenumber(self, phone_number):
             """validates the phone number format  using regex"""
-            myregex = re.compile(r"^(\+)[0-9]{9}")
-            phone_number_validation_result = myregex.fullmatch(phone_number)
-            if not phone_number_validation_result:
-                raise HotelManagementException("Invalid phone number format")
-            return phone_number
+            phone = PhoneNumber(phone_number)
+            return phone.value
 
         def validate_numdays(self,num_days):
             """validates the number of days"""
