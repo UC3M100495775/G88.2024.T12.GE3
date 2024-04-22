@@ -140,8 +140,6 @@ class HotelManager:
 
             self.validate_id_card(id_card)
 
-
-
             self.validate_name_surname(name_surname)
             credit_card = self.validatecreditcard(credit_card)
             arrival_date = self.validate_arrival_date(arrival_date)
@@ -159,15 +157,7 @@ class HotelManager:
             # escribo el fichero Json con todos los datos
             file_store = JSON_FILES_PATH + "store_reservation.json"
 
-            #leo los datos del fichero si existe , y si no existe creo una lista vacia
-            try:
-                with open(file_store, "r", encoding="utf-8", newline="") as file:
-                    data_list = json.load(file)
-            except FileNotFoundError:
-                data_list = []
-            except json.JSONDecodeError as json_decode_error:
-                raise HotelManagementException ("JSON Decode Error - Wrong "
-                                                "JSON Format") from json_decode_error
+            data_list = self.load_json_store(file_store)
 
             #compruebo que esta reserva no esta en la lista
             for item in data_list:
@@ -187,6 +177,19 @@ class HotelManager:
                     from file_not_found_error
 
             return my_reservation.localizer
+
+        def load_json_store(self, file_store):
+            # leo los datos del fichero si existe , y si no existe creo una lista vacia
+            try:
+                with open(file_store, "r", encoding="utf-8",
+                          newline="") as file:
+                    list = json.load(file)
+            except FileNotFoundError:
+                list = []
+            except json.JSONDecodeError as json_decode_error:
+                raise HotelManagementException("JSON Decode Error - Wrong "
+                                               "JSON Format") from json_decode_error
+            return list
 
         def validate_name_surname(self, name_surname):
             name_surname_regex_pattern = r"^(?=^.{10,50}$)([a-zA-Z]+(\s[" \
@@ -281,15 +284,7 @@ class HotelManager:
             # escribo el fichero Json con todos los datos
             file_store = JSON_FILES_PATH + "store_check_in.json"
 
-            # leo los datos del fichero si existe , y si no existe creo una lista vacia
-            try:
-                with open(file_store, "r", encoding="utf-8", newline="") as file:
-                    room_key_list = json.load(file)
-            except FileNotFoundError as file_not_found_error:
-                room_key_list = []
-            except json.JSONDecodeError as json_decode_error:
-                raise HotelManagementException("JSON Decode Error - Wrong "
-                                               "JSON Format") from json_decode_error
+            room_key_list = self.load_json_store(file_store)
 
             # comprobar que no he hecho otro ckeckin antes
             for item in room_key_list:
