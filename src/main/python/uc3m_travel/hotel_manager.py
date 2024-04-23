@@ -7,6 +7,10 @@ from uc3m_travel.hotel_reservation import HotelReservation
 from uc3m_travel.hotel_stay import HotelStay
 from uc3m_travel.hotel_management_config import JSON_FILES_PATH
 from uc3m_travel.attributes.attribute_phone_number import PhoneNumber
+from uc3m_travel.attributes.attribute_arrival_date import ArrivalDate
+from uc3m_travel.attributes.attribute_localizer import Localizer
+from uc3m_travel.attributes.attribute_roomkey import RoomKey
+from uc3m_travel.attributes.attribute_name_surname import NameSurname
 from freezegun import freeze_time
 
 class HotelManager:
@@ -43,11 +47,8 @@ class HotelManager:
 
         def validate_arrival_date(self, arrival_date):
             """validates the arrival date format  using regex"""
-            myregex = re.compile(r"^(([0-2]\d|-3[0-1])\/(0\d|1[0-2])\/\d\d\d\d)$")
-            arrival_date_validation_result = myregex.fullmatch(arrival_date)
-            if not arrival_date_validation_result:
-                raise HotelManagementException("Invalid date format")
-            return arrival_date
+            date = ArrivalDate(arrival_date)
+            return date.value
 
         def validate_phonenumber(self, phone_number):
             """validates the phone number format  using regex"""
@@ -78,27 +79,17 @@ class HotelManager:
 
         def validate_localizer(self, localizer_value):
             """validates the localizer format using a regex"""
-            localizer_regex_pattern = r'^[a-fA-F0-9]{32}$'
-            myregex = re.compile(localizer_regex_pattern)
-            if not myregex.fullmatch(localizer_value):
-                raise HotelManagementException("Invalid localizer")
-            return localizer_value
+            localizer = Localizer(localizer_value)
+            return localizer.value
 
         def validate_roomkey(self, roomkey_value):
             """validates the roomkey format using a regex"""
-            roomkey_regex_pattern = r'^[a-fA-F0-9]{64}$'
-            myregex = re.compile(roomkey_regex_pattern)
-            if not myregex.fullmatch(roomkey_value):
-                raise HotelManagementException("Invalid room key format")
-            return roomkey_value
+            room_key = RoomKey(roomkey_value)
+            return room_key.value
 
         def validate_name_surname(self, name_surname):
-            name_surname_regex_pattern = r"^(?=^.{10,50}$)([a-zA-Z]+(\s[" \
-                                    r"a-zA-Z]+)+)$"
-            myregex = re.compile(name_surname_regex_pattern)
-            regex_matches = myregex.fullmatch(name_surname)
-            if not regex_matches:
-                raise HotelManagementException("Invalid name format")
+            name = NameSurname(name_surname)
+            return name.value
 
         def validate_id_card(self, my_id_card):
             idcard_regex_pattern = r'^[0-9]{8}[A-Z]{1}$'
