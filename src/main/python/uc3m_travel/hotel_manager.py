@@ -11,6 +11,9 @@ from uc3m_travel.attributes.attribute_arrival_date import ArrivalDate
 from uc3m_travel.attributes.attribute_localizer import Localizer
 from uc3m_travel.attributes.attribute_roomkey import RoomKey
 from uc3m_travel.attributes.attribute_name_surname import NameSurname
+from uc3m_travel.attributes.attribute_credit_card import CreditCard
+from uc3m_travel.attributes.attribute_id_card import IdCard
+from uc3m_travel.attributes.attribute_numdays import NumDays
 from freezegun import freeze_time
 
 class HotelManager:
@@ -26,24 +29,8 @@ class HotelManager:
             # credit-card-number-validation-using-luhns-algorithm-in-python-c0ed2fac6234
             # PLEASE INCLUDE HERE THE CODE FOR VALIDATING THE GUID
             # RETURN TRUE IF THE GUID IS RIGHT, OR FALSE IN OTHER CASE
-
-            myregex = re.compile(r"^[0-9]{16}")
-            credit_card_validation_result = myregex.fullmatch(card_number)
-            if not credit_card_validation_result:
-                raise HotelManagementException("Invalid credit card format")
-            def digits_of(card_number_string):
-                return [int(digit) for digit in str(card_number_string)]
-
-            digits = digits_of(card_number)
-            odd_digits = digits[-1::-2]
-            even_digits = digits[-2::-2]
-            checksum = 0
-            checksum += sum(odd_digits)
-            for digit in even_digits:
-                checksum += sum(digits_of(digit * 2))
-            if not checksum % 10 == 0:
-                raise HotelManagementException("Invalid credit card number (not luhn)")
-            return card_number
+            credit_card = CreditCard(card_number)
+            return credit_card.value
 
         def validate_arrival_date(self, arrival_date):
             """validates the arrival date format  using regex"""
@@ -57,25 +44,8 @@ class HotelManager:
 
         def validate_numdays(self,num_days):
             """validates the number of days"""
-            try:
-                days = int(num_days)
-            except ValueError as ex:
-                raise HotelManagementException("Invalid num_days datatype") from ex
-            if (days < 1 or days > 10):
-                raise HotelManagementException("Numdays should be in the range 1-10")
-            return num_days
-
-        @staticmethod
-        def validate_dni(dni):
-            """RETURN TRUE IF THE DNI IS RIGHT, OR FALSE IN OTHER CASE"""
-            dni_lettter_mapping = {"0": "T", "1": "R", "2": "W", "3": "A",
-                              "4": "G", "5": "M",
-                 "6": "Y", "7": "F", "8": "P", "9": "D", "10": "X", "11": "B",
-                 "12": "N", "13": "J", "14": "Z", "15": "S", "16": "Q", "17": "V",
-                 "18": "H", "19": "L", "20": "C", "21": "K", "22": "E"}
-            dni_number = int(dni[0:8])
-            remainder = str(dni_number % 23)
-            return dni[8] == dni_lettter_mapping[remainder]
+            days = NumDays(num_days)
+            return days.value
 
         def validate_localizer(self, localizer_value):
             """validates the localizer format using a regex"""
@@ -92,12 +62,8 @@ class HotelManager:
             return name.value
 
         def validate_id_card(self, my_id_card):
-            idcard_regex_pattern = r'^[0-9]{8}[A-Z]{1}$'
-            my_regex = re.compile(idcard_regex_pattern)
-            if not my_regex.fullmatch(my_id_card):
-                raise HotelManagementException("Invalid IdCard format")
-            if not self.validate_dni(my_id_card):
-                raise HotelManagementException("Invalid IdCard letter")
+            id_card = IdCard(my_id_card)
+            return id_card.value
 
         def read_data_from_json(self, json_file_path):
             """reads the content of a json file with two fields: CreditCard and phoneNumber"""
