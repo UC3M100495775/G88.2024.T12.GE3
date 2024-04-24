@@ -10,6 +10,9 @@ from uc3m_travel.attributes.attribute_credit_card import CreditCard
 from uc3m_travel.attributes.attribute_id_card import IdCard
 from uc3m_travel.attributes.attribute_numdays import NumDays
 from uc3m_travel.attributes.attribute_room_type import RoomType
+from uc3m_travel.attributes.attribute_localizer import Localizer
+from uc3m_travel.hotel_management_config import JSON_FILES_PATH
+from freezegun import freeze_time
 
 class HotelReservation:
     """Class for representing hotel reservations"""
@@ -47,10 +50,12 @@ class HotelReservation:
                      "room_type": self.__room_type,
                      }
         return "HotelReservation:" + json_info.__str__()
+
     @property
     def credit_card(self):
         """property for getting and setting the credit_card number"""
         return self.__credit_card_number
+
     @credit_card.setter
     def credit_card(self, value):
         self.__credit_card_number = value
@@ -59,6 +64,7 @@ class HotelReservation:
     def id_card(self):
         """property for getting and setting the id_card"""
         return self.__id_card
+
     @id_card.setter
     def id_card(self, value):
         self.__id_card = value
@@ -82,3 +88,44 @@ class HotelReservation:
     def room_type(self):
         """Returns the room type"""
         return self.__room_type
+
+'''
+    @classmethod
+    def create_reservation_from_arrival(cls, my_id_card, my_localizer):
+        id_card = IdCard(my_id_card).value
+        localizer = Localizer(my_localizer).value
+        # self.validate_localizer() hay que validar
+        # buscar en almacen
+        file_store = JSON_FILES_PATH + "store_reservation.json"
+        # leo los datos del fichero , si no existe deber dar error porque el almacen de reserva
+        # debe existir para hacer el checkin
+
+        # This will have to be changed when the JSON store classes are
+        # implemented
+
+        store_list = self.read_json_not_empty(file_store, "guest_arrival")
+        # compruebo si esa reserva esta en el almacen
+        reservation = self.find_reservation(localizer, store_list)
+
+        if id_card != reservation["_HotelReservation__id_card"]:
+            raise HotelManagementException(
+                "Error: Localizer is not correct for this IdCard")
+        # regenerar clave y ver si coincide
+        reservation_date = datetime.fromtimestamp(
+            reservation["_HotelReservation__reservation_date"])
+        with freeze_time(reservation_date):
+            new_reservation = HotelReservation(
+                credit_card_number=reservation[
+                    "_HotelReservation__credit_card_number"],
+                id_card=reservation["_HotelReservation__id_card"],
+                num_days=reservation["_HotelReservation__num_days"],
+                room_type=reservation["_HotelReservation__room_type"],
+                arrival=reservation["_HotelReservation__arrival"],
+                name_surname=reservation[
+                    "_HotelReservation__name_surname"],
+                phone_number=reservation[
+                    "_HotelReservation__phone_number"])
+        if new_reservation.localizer != localizer:
+            raise HotelManagementException(
+                "Error: reservation has been manipulated")
+        return new_reservation'''
