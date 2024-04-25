@@ -9,6 +9,9 @@ from uc3m_travel.attributes.attribute_credit_card import CreditCard
 from uc3m_travel.attributes.attribute_id_card import IdCard
 from uc3m_travel.attributes.attribute_numdays import NumDays
 from uc3m_travel.storage.json_store import JsonStore
+from uc3m_travel.storage.reservation_json_store import ReservationStoreJson
+from uc3m_travel.storage.stay_json_store import StayStoreJson
+from uc3m_travel.storage.checkout_json_store import CheckoutStoreJson
 
 class HotelManager:
     class __HotelManager:
@@ -61,15 +64,15 @@ class HotelManager:
                                               arrival=arrival_date,
                                               num_days=num_days)
 
-            reservation_store = JsonStore()
+            reservation_store = ReservationStoreJson()
             return reservation_store.save_reservation(my_reservation)
 
         def guest_arrival(self, file_input:str)->str:
-            checkin = JsonStore()
+            checkin = StayStoreJson()
             return checkin.save_chekin(file_input)
 
         def guest_checkout(self, room_key:str)->bool:
-            checkout = JsonStore()
+            checkout = CheckoutStoreJson()
             return checkout.save_checkout(room_key)
 
     __instance = None;
