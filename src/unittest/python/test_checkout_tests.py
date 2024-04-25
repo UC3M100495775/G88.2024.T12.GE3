@@ -75,7 +75,6 @@ class TestDeliverProduct(TestCase):
         value = my_manager.guest_checkout(
             "4f57880d4240350db9b276c84edaacc923a63906a408cc8da2b52c49213d3859")
         self.assertTrue(value)
-
         file_store_ckeck_out = JSON_FILES_PATH + "store_check_out.json"
 
         # read the file  to compare

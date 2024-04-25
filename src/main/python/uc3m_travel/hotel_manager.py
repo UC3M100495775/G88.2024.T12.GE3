@@ -22,48 +22,23 @@ class HotelManager:
         def __init__(self):
             pass
 
-        def validatecreditcard(self, card_number):
-            """validates the credit card number using luhn altorithm"""
-            #taken form
-            # https://allwin-raju-12.medium.com/
-            # credit-card-number-validation-using-luhns-algorithm-in-python-c0ed2fac6234
-            # PLEASE INCLUDE HERE THE CODE FOR VALIDATING THE GUID
-            # RETURN TRUE IF THE GUID IS RIGHT, OR FALSE IN OTHER CASE
-            credit_card = CreditCard(card_number)
-            return credit_card.value
-
-        def validate_arrival_date(self, arrival_date):
-            """validates the arrival date format  using regex"""
-            date = ArrivalDate(arrival_date)
-            return date.value
-
-        def validate_phonenumber(self, phone_number):
-            """validates the phone number format  using regex"""
-            phone = PhoneNumber(phone_number)
-            return phone.value
-
-        def validate_numdays(self,num_days):
-            """validates the number of days"""
-            days = NumDays(num_days)
-            return days.value
-
-        def validate_localizer(self, localizer_value):
-            """validates the localizer format using a regex"""
-            localizer = Localizer(localizer_value)
-            return localizer.value
-
-        def validate_roomkey(self, roomkey_value):
-            """validates the roomkey format using a regex"""
-            room_key = RoomKey(roomkey_value)
-            return room_key.value
-
-        def validate_name_surname(self, name_surname):
-            name = NameSurname(name_surname)
-            return name.value
-
-        def validate_id_card(self, my_id_card):
-            id_card = IdCard(my_id_card)
-            return id_card.value
+        def validate(self, attribute, value):
+            """Generic validation method"""
+            validators = {
+                "credit_card": CreditCard,
+                "arrival_date": ArrivalDate,
+                "phone_number": PhoneNumber,
+                "num_days": NumDays,
+                "localizer": Localizer,
+                "room_key": RoomKey,
+                "name_surname": NameSurname,
+                "id_card": IdCard
+            }
+            validator = validators.get(attribute)
+            if validator:
+                return validator(value).value
+            else:
+                raise ValueError("Invalid attribute")
 
         def read_data_from_json(self, json_file_path):
             """reads the content of a json file with two fields: CreditCard and phoneNumber"""
@@ -83,7 +58,7 @@ class HotelManager:
             except KeyError as key_error:
                 raise HotelManagementException("JSON Decode Error - Invalid "
                                                "JSON Key") from key_error
-            if not self.validatecreditcard(card_data):
+            if not self.validate("credit_card", card_data):
                 raise HotelManagementException("Invalid credit card number")
             # Close the file
             return reservation_obj
@@ -157,13 +132,13 @@ class HotelManager:
             """manages the hotel reservation: creates a reservation and
             saves it into a json file"""
 
-            self.validate_id_card(id_card)
+            self.validate("id_card", id_card)
 
-            self.validate_name_surname(name_surname)
-            credit_card = self.validatecreditcard(credit_card)
-            arrival_date = self.validate_arrival_date(arrival_date)
-            num_days = self.validate_numdays(num_days)
-            phone_number = self.validate_phonenumber(phone_number)
+            self.validate("name_surname", name_surname)
+            credit_card = self.validate("credit_card", credit_card)
+            arrival_date = self.validate("arrival_date", arrival_date)
+            num_days = self.validate("num_days", num_days)
+            phone_number = self.validate("phone_number", phone_number)
 
             my_reservation = HotelReservation(id_card=id_card,
                                               credit_card_number=credit_card,
@@ -241,8 +216,8 @@ class HotelManager:
             return my_checkin.room_key
 
         def create_reservation_from_arrival(self, my_id_card, my_localizer):
-            self.validate_id_card(my_id_card)
-            self.validate_localizer(my_localizer)
+            self.validate("id_card", my_id_card)
+            self.validate("localizer", my_localizer)
             # self.validate_localizer() hay que validar
             # buscar en almacen
             file_store = JSON_FILES_PATH + "store_reservation.json"
@@ -282,7 +257,7 @@ class HotelManager:
 
         def guest_checkout(self, room_key:str)->bool:
             """manages the checkout of a guest"""
-            self.validate_roomkey(room_key)
+            self.validate("room_key", room_key)
             #check thawt the roomkey is stored in the checkins file
             file_store = JSON_FILES_PATH + "store_check_in.json"
 

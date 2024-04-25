@@ -1,6 +1,6 @@
 [
   {
-    "_HotelStay__alg": "SHA-256",
+    "_HotelStay__algorithm": "SHA-256",
     "_HotelStay__type": "SINGLE",
     "_HotelStay__idcard": "12345678Z",
     "_HotelStay__localizer": "450a53be9b39944e62e7164ca5f5aadf",
