@@ -1,3 +1,4 @@
+"""Definition of attribute PhoneNumber"""
 from uc3m_travel.attributes.attribute import Attribute
 
 class PhoneNumber(Attribute):

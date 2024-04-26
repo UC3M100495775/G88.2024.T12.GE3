@@ -1,3 +1,4 @@
+"""Definition of attribute IdCard"""
 from uc3m_travel.attributes.attribute import Attribute
 from uc3m_travel.hotel_management_exception import HotelManagementException
 
@@ -31,4 +32,3 @@ class IdCard(Attribute):
         dni_number = int(dni[0:8])
         remainder = str(dni_number % 23)
         return dni[8] == dni_lettter_mapping[remainder]
-

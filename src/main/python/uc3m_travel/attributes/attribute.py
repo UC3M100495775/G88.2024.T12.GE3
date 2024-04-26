@@ -1,6 +1,8 @@
+"""Module for attribute class"""
 import re
 from uc3m_travel.hotel_management_exception import HotelManagementException
 
+# pylint: disable=too-few-public-methods
 class Attribute():
     """Attribute class definition"""
     def __init__(self):
@@ -23,4 +25,5 @@ class Attribute():
 
     @value.setter
     def value(self, attr_value):
+        """Sets attr_value"""
         self._attr_value = self._validate(attr_value)

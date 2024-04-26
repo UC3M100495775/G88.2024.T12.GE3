@@ -1,3 +1,4 @@
+"""Definition of attribute CreditCard"""
 from uc3m_travel.attributes.attribute import Attribute
 from uc3m_travel.hotel_management_exception import HotelManagementException
 
@@ -27,5 +28,5 @@ class CreditCard(Attribute):
 
     @staticmethod
     def digits_of(card_number_string):
+        """returns the digits of a string"""
         return [int(digit) for digit in str(card_number_string)]
-

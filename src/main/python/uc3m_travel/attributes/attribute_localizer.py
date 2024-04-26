@@ -1,3 +1,4 @@
+"""Definition of attribute Localizer"""
 from uc3m_travel.attributes.attribute import Attribute
 
 class Localizer(Attribute):

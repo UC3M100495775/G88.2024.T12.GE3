@@ -1,3 +1,4 @@
+"""Module for attribute ArrivalDate"""
 from uc3m_travel.attributes.attribute import Attribute
 
 class ArrivalDate(Attribute):

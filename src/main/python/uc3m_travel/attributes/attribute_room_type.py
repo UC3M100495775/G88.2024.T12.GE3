@@ -1,3 +1,4 @@
+"""Definition of attribute RoomType"""
 from uc3m_travel.attributes.attribute import Attribute
 
 class RoomType(Attribute):

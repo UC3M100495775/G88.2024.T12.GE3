@@ -1,3 +1,4 @@
+"""Definition of attribute NumDays"""
 from uc3m_travel.attributes.attribute import Attribute
 from uc3m_travel.hotel_management_exception import HotelManagementException
 
@@ -21,4 +22,3 @@ class NumDays(Attribute):
             raise HotelManagementException(
                 "Numdays should be in the range 1-10")
         return attr_value
-

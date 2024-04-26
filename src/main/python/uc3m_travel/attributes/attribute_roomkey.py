@@ -1,3 +1,4 @@
+"""Definition of attribute RoomKey"""
 from uc3m_travel.attributes.attribute import Attribute
 
 class RoomKey(Attribute):

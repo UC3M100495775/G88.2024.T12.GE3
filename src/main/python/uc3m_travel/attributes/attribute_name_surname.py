@@ -1,3 +1,4 @@
+"""Definition of attribute NameSurname"""
 from uc3m_travel.attributes.attribute import Attribute
 
 
