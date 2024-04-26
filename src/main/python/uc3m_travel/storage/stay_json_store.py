@@ -56,10 +56,3 @@ class StayStoreJson(JsonStore):
 
         return my_checkin.room_key
 
-
-    def find_reservation(self, my_localizer, store_list):
-        for item in store_list:
-            if my_localizer == item["_HotelReservation__localizer"]:
-                return item
-        raise HotelManagementException("Error: localizer not found")
-

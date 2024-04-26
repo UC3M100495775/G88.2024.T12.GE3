@@ -97,6 +97,7 @@ class HotelReservation:
                 return item
         raise HotelManagementException("Error: localizer not found")
 
+    ### CLASSMETHODS ###
     @property
     def credit_card(self):
         """property for getting and setting the credit_card number"""

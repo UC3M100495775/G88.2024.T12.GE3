@@ -8,16 +8,16 @@ from uc3m_travel.attributes.attribute_name_surname import NameSurname
 from uc3m_travel.attributes.attribute_credit_card import CreditCard
 from uc3m_travel.attributes.attribute_id_card import IdCard
 from uc3m_travel.attributes.attribute_numdays import NumDays
-from uc3m_travel.storage.json_store import JsonStore
 from uc3m_travel.storage.reservation_json_store import ReservationStoreJson
 from uc3m_travel.storage.stay_json_store import StayStoreJson
 from uc3m_travel.storage.checkout_json_store import CheckoutStoreJson
-from uc3m_travel.hotel_management_config import JSON_FILES_PATH
-from uc3m_travel.hotel_management_exception import HotelManagementException
-from datetime import datetime
-from freezegun import freeze_time
 
+
+#pylint: disable=too-few-public-methods
 class HotelManager:
+    """Main class, manages reservations, stays and checkouts in the hotel"""
+
+    #pylint: disable=invalid-name
     class __HotelManager:
         """Class with all the methods for managing reservations and stays"""
         def __init__(self):
@@ -38,8 +38,7 @@ class HotelManager:
             validator = validators.get(attribute)
             if validator:
                 return validator(value).value
-            else:
-                raise ValueError("Invalid attribute")
+            raise ValueError("Invalid attribute")
 
 
         ### MAIN METHODS ###
@@ -75,18 +74,21 @@ class HotelManager:
 
 
         def guest_arrival(self, file_input:str)->str:
+            """Manages the arrival of a guest with a reservation"""
             checkin = StayStoreJson()
             return checkin.save_checkin(file_input)
 
         def guest_checkout(self, room_key:str)->bool:
+            """Manages the checkout of a guest"""
             checkout = CheckoutStoreJson()
             return checkout.save_checkout(room_key)
 
         ### MAIN METHODS ###
 
-        ### CLASS METHODS ###
 
-    __instance = None;
+        ### SINGLETON PATTERN ###
+
+    __instance = None
     def __new__(cls):
         if not HotelManager.__instance:
             HotelManager.__instance = HotelManager.__HotelManager()
