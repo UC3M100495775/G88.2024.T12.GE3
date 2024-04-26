@@ -1,8 +1,8 @@
 """Hotel reservation class"""
 import hashlib
 from datetime import datetime
-import re
-from .hotel_management_exception import HotelManagementException
+# pylint: disable=import-error
+from freezegun import freeze_time
 from uc3m_travel.attributes.attribute_phone_number import PhoneNumber
 from uc3m_travel.attributes.attribute_arrival_date import ArrivalDate
 from uc3m_travel.attributes.attribute_name_surname import NameSurname
@@ -10,10 +10,10 @@ from uc3m_travel.attributes.attribute_credit_card import CreditCard
 from uc3m_travel.attributes.attribute_id_card import IdCard
 from uc3m_travel.attributes.attribute_numdays import NumDays
 from uc3m_travel.attributes.attribute_room_type import RoomType
-from uc3m_travel.attributes.attribute_localizer import Localizer
 from uc3m_travel.hotel_management_config import JSON_FILES_PATH
-from freezegun import freeze_time
 from uc3m_travel.storage.reservation_json_store import ReservationStoreJson
+from .hotel_management_exception import HotelManagementException
+
 
 class HotelReservation:
     """Class for representing hotel reservations"""
@@ -55,6 +55,7 @@ class HotelReservation:
     ### CLASSMETHODS ###
     @classmethod
     def create_reservation_from_arrival(cls, my_id_card, my_localizer):
+        """creates a reservation from the arrival data"""
         reservation_store = ReservationStoreJson()
         reservation_store.validate_id_card(my_id_card)
         reservation_store.validate_localizer(my_localizer)
@@ -92,6 +93,7 @@ class HotelReservation:
 
     @classmethod
     def find_reservation(cls, my_localizer, store_list):
+        """finds a reservation in the store"""
         for item in store_list:
             if my_localizer == item["_HotelReservation__localizer"]:
                 return item
@@ -135,4 +137,3 @@ class HotelReservation:
     def room_type(self):
         """Returns the room type"""
         return self.__room_type
-
