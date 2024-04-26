@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="test_room_reservation_tests.TestHotelReservation-20240411185307" tests="3" file="test_room_reservation_tests.py" time="0.112" timestamp="2024-04-11T18:53:07" failures="0" errors="0" skipped="0">
+	<testcase classname="test_room_reservation_tests.TestHotelReservation" name="test_duplicated_id_reservation_tests" time="0.001" timestamp="2024-04-11T18:53:07"/>
+	<testcase classname="test_room_reservation_tests.TestHotelReservation" name="test_duplicated_reservation_tests" time="0.006" timestamp="2024-04-11T18:53:07"/>
+	<testcase classname="test_room_reservation_tests.TestHotelReservation" name="test_parametrized_cases_tests" time="0.105" timestamp="2024-04-11T18:53:07"/>
+</testsuite>

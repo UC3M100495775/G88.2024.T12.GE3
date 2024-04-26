@@ -1,0 +1,26 @@
+Name                                               Stmts   Miss Branch BrPart  Cover
+------------------------------------------------------------------------------------
+uc3m_travel/__init__.py                                4      0      0      0   100%
+uc3m_travel/attributes/__init__.py                     0      0      0      0   100%
+uc3m_travel/attributes/attribute.py                   19      4      6      0    84%
+uc3m_travel/attributes/attribute_arrival_date.py       6      0      0      0   100%
+uc3m_travel/attributes/attribute_credit_card.py       22      0      8      0   100%
+uc3m_travel/attributes/attribute_id_card.py           18      0      4      0   100%
+uc3m_travel/attributes/attribute_localizer.py          6      0      0      0   100%
+uc3m_travel/attributes/attribute_name_surname.py       6      0      0      0   100%
+uc3m_travel/attributes/attribute_numdays.py           15      0      2      0   100%
+uc3m_travel/attributes/attribute_phone_number.py       6      0      0      0   100%
+uc3m_travel/attributes/attribute_room_type.py          6      0      0      0   100%
+uc3m_travel/attributes/attribute_roomkey.py            6      0      0      0   100%
+uc3m_travel/hotel_management_config.py                 3      0      0      0   100%
+uc3m_travel/hotel_management_exception.py             10      1      4      0    93%
+uc3m_travel/hotel_manager.py                          43      1      4      1    96%
+uc3m_travel/hotel_reservation.py                      74      3     30      0    97%
+uc3m_travel/hotel_stay.py                             38      7     16      0    87%
+uc3m_travel/storage/__init__.py                        0      0      0      0   100%
+uc3m_travel/storage/checkout_json_store.py            28      0     12      1    98%
+uc3m_travel/storage/json_store.py                     60     10     32      5    79%
+uc3m_travel/storage/reservation_json_store.py         15      0      6      0   100%
+uc3m_travel/storage/stay_json_store.py                28      2      6      1    85%
+------------------------------------------------------------------------------------
+TOTAL                                                413     28    130      8    92%

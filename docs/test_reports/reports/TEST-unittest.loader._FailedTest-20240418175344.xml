@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="unittest.loader._FailedTest-20240418175344" tests="1" file="unittest/loader.py" time="0.004" timestamp="2024-04-18T17:53:44" failures="0" errors="1" skipped="0">
+	<testcase classname="unittest.loader._FailedTest" name="test_singleton_hotel_manager_tests" time="0.004" timestamp="2024-04-18T17:53:44">
+		<error type="ImportError" message="Failed to import test module: test_singleton_hotel_manager_tests
+Traceback (most recent call last):
+  File &quot;/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11/unittest/loader.py&quot;, line 154, in loadTestsFromName
+    module = __import__(module_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File &quot;/Users/tito/Library/CloudStorage/GoogleDrive-100495775@alumnos.uc3m.es/My Drive/2.UC3M/2.Classes/SoftwareDev/Lab/G88.2024.T12.GE3/src/unittest/python/test_singleton_hotel_manager_tests.py&quot;, line 2, in &lt;module&gt;
+    from uc3m_travel.hotel_management_config import HotelManager
+ImportError: cannot import name 'HotelManager' from 'uc3m_travel.hotel_management_config' (/Users/tito/Library/CloudStorage/GoogleDrive-100495775@alumnos.uc3m.es/My Drive/2.UC3M/2.Classes/SoftwareDev/Lab/G88.2024.T12.GE3/src/main/python/uc3m_travel/hotel_management_config.py)
+"><![CDATA[Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11/unittest/case.py", line 57, in testPartExecutor
+    yield
+  File "/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11/unittest/case.py", line 623, in run
+    self._callTestMethod(testMethod)
+    ^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11/unittest/case.py", line 579, in _callTestMethod
+    if method() is not None:
+    ^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11/unittest/loader.py", line 34, in testFailure
+    raise self._exception
+    ^^^^^^^^^^^^^^^^^
+ImportError: Failed to import test module: test_singleton_hotel_manager_tests
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11/unittest/loader.py", line 154, in loadTestsFromName
+    module = __import__(module_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tito/Library/CloudStorage/GoogleDrive-100495775@alumnos.uc3m.es/My Drive/2.UC3M/2.Classes/SoftwareDev/Lab/G88.2024.T12.GE3/src/unittest/python/test_singleton_hotel_manager_tests.py", line 2, in <module>
+    from uc3m_travel.hotel_management_config import HotelManager
+ImportError: cannot import name 'HotelManager' from 'uc3m_travel.hotel_management_config' (/Users/tito/Library/CloudStorage/GoogleDrive-100495775@alumnos.uc3m.es/My Drive/2.UC3M/2.Classes/SoftwareDev/Lab/G88.2024.T12.GE3/src/main/python/uc3m_travel/hotel_management_config.py)
+
+]]></error>
+	</testcase>
+</testsuite>

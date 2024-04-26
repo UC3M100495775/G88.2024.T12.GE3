@@ -1,0 +1,118 @@
+running clean
+'build/lib' does not exist -- can't clean it
+'build/bdist.macosx-13-arm64' does not exist -- can't clean it
+'build/scripts-3.11' does not exist -- can't clean it
+running bdist_wheel
+running build
+running build_py
+creating build
+creating build/lib
+creating build/lib/uc3m_travel
+copying uc3m_travel/hotel_management_exception.py -> build/lib/uc3m_travel
+copying uc3m_travel/__init__.py -> build/lib/uc3m_travel
+copying uc3m_travel/hotel_management_config.py -> build/lib/uc3m_travel
+copying uc3m_travel/hotel_manager.py -> build/lib/uc3m_travel
+copying uc3m_travel/hotel_stay.py -> build/lib/uc3m_travel
+copying uc3m_travel/hotel_reservation.py -> build/lib/uc3m_travel
+creating build/lib/uc3m_travel/attributes
+copying uc3m_travel/attributes/attribute_arrival_date.py -> build/lib/uc3m_travel/attributes
+copying uc3m_travel/attributes/attribute.py -> build/lib/uc3m_travel/attributes
+copying uc3m_travel/attributes/attribute_localizer.py -> build/lib/uc3m_travel/attributes
+copying uc3m_travel/attributes/__init__.py -> build/lib/uc3m_travel/attributes
+copying uc3m_travel/attributes/attribute_name_surname.py -> build/lib/uc3m_travel/attributes
+copying uc3m_travel/attributes/attribute_phone_number.py -> build/lib/uc3m_travel/attributes
+copying uc3m_travel/attributes/attribute_roomkey.py -> build/lib/uc3m_travel/attributes
+copying uc3m_travel/attributes/attribute_id_card.py -> build/lib/uc3m_travel/attributes
+copying uc3m_travel/attributes/attribute_room_type.py -> build/lib/uc3m_travel/attributes
+copying uc3m_travel/attributes/attribute_credit_card.py -> build/lib/uc3m_travel/attributes
+copying uc3m_travel/attributes/attribute_numdays.py -> build/lib/uc3m_travel/attributes
+creating build/lib/uc3m_travel/storage
+copying uc3m_travel/storage/checkout_json_store.py -> build/lib/uc3m_travel/storage
+copying uc3m_travel/storage/json_store.py -> build/lib/uc3m_travel/storage
+copying uc3m_travel/storage/reservation_json_store.py -> build/lib/uc3m_travel/storage
+copying uc3m_travel/storage/__init__.py -> build/lib/uc3m_travel/storage
+copying uc3m_travel/storage/stay_json_store.py -> build/lib/uc3m_travel/storage
+/Users/tito/Library/CloudStorage/GoogleDrive-100495775@alumnos.uc3m.es/My Drive/2.UC3M/2.Classes/SoftwareDev/Lab/G88.2024.T12.GE3/.pybuilder/plugins/cpython-3.11.5.final.0/lib/python3.11/site-packages/setuptools/_distutils/cmd.py:66: SetuptoolsDeprecationWarning: setup.py install is deprecated.
+!!
+
+        ********************************************************************************
+        Please avoid running ``setup.py`` directly.
+        Instead, use pypa/build, pypa/installer or other
+        standards-based tools.
+
+        See https://blog.ganssle.io/articles/2021/10/setup-py-deprecated.html for details.
+        ********************************************************************************
+
+!!
+  self.initialize_options()
+installing to build/bdist.macosx-13-arm64/wheel
+running install
+running install_lib
+creating build/bdist.macosx-13-arm64
+creating build/bdist.macosx-13-arm64/wheel
+creating build/bdist.macosx-13-arm64/wheel/uc3m_travel
+copying build/lib/uc3m_travel/hotel_management_exception.py -> build/bdist.macosx-13-arm64/wheel/uc3m_travel
+copying build/lib/uc3m_travel/__init__.py -> build/bdist.macosx-13-arm64/wheel/uc3m_travel
+creating build/bdist.macosx-13-arm64/wheel/uc3m_travel/storage
+copying build/lib/uc3m_travel/storage/checkout_json_store.py -> build/bdist.macosx-13-arm64/wheel/uc3m_travel/storage
+copying build/lib/uc3m_travel/storage/json_store.py -> build/bdist.macosx-13-arm64/wheel/uc3m_travel/storage
+copying build/lib/uc3m_travel/storage/reservation_json_store.py -> build/bdist.macosx-13-arm64/wheel/uc3m_travel/storage
+copying build/lib/uc3m_travel/storage/__init__.py -> build/bdist.macosx-13-arm64/wheel/uc3m_travel/storage
+copying build/lib/uc3m_travel/storage/stay_json_store.py -> build/bdist.macosx-13-arm64/wheel/uc3m_travel/storage
+creating build/bdist.macosx-13-arm64/wheel/uc3m_travel/attributes
+copying build/lib/uc3m_travel/attributes/attribute_arrival_date.py -> build/bdist.macosx-13-arm64/wheel/uc3m_travel/attributes
+copying build/lib/uc3m_travel/attributes/attribute.py -> build/bdist.macosx-13-arm64/wheel/uc3m_travel/attributes
+copying build/lib/uc3m_travel/attributes/attribute_localizer.py -> build/bdist.macosx-13-arm64/wheel/uc3m_travel/attributes
+copying build/lib/uc3m_travel/attributes/__init__.py -> build/bdist.macosx-13-arm64/wheel/uc3m_travel/attributes
+copying build/lib/uc3m_travel/attributes/attribute_name_surname.py -> build/bdist.macosx-13-arm64/wheel/uc3m_travel/attributes
+copying build/lib/uc3m_travel/attributes/attribute_phone_number.py -> build/bdist.macosx-13-arm64/wheel/uc3m_travel/attributes
+copying build/lib/uc3m_travel/attributes/attribute_roomkey.py -> build/bdist.macosx-13-arm64/wheel/uc3m_travel/attributes
+copying build/lib/uc3m_travel/attributes/attribute_id_card.py -> build/bdist.macosx-13-arm64/wheel/uc3m_travel/attributes
+copying build/lib/uc3m_travel/attributes/attribute_room_type.py -> build/bdist.macosx-13-arm64/wheel/uc3m_travel/attributes
+copying build/lib/uc3m_travel/attributes/attribute_credit_card.py -> build/bdist.macosx-13-arm64/wheel/uc3m_travel/attributes
+copying build/lib/uc3m_travel/attributes/attribute_numdays.py -> build/bdist.macosx-13-arm64/wheel/uc3m_travel/attributes
+copying build/lib/uc3m_travel/hotel_management_config.py -> build/bdist.macosx-13-arm64/wheel/uc3m_travel
+copying build/lib/uc3m_travel/hotel_manager.py -> build/bdist.macosx-13-arm64/wheel/uc3m_travel
+copying build/lib/uc3m_travel/hotel_stay.py -> build/bdist.macosx-13-arm64/wheel/uc3m_travel
+copying build/lib/uc3m_travel/hotel_reservation.py -> build/bdist.macosx-13-arm64/wheel/uc3m_travel
+running install_egg_info
+running egg_info
+writing EG2.egg-info/PKG-INFO
+writing dependency_links to EG2.egg-info/dependency_links.txt
+writing namespace_packages to EG2.egg-info/namespace_packages.txt
+writing top-level names to EG2.egg-info/top_level.txt
+reading manifest file 'EG2.egg-info/SOURCES.txt'
+writing manifest file 'EG2.egg-info/SOURCES.txt'
+Copying EG2.egg-info to build/bdist.macosx-13-arm64/wheel/EG2-1.0.dev0-py3.11.egg-info
+running install_scripts
+creating build/bdist.macosx-13-arm64/wheel/EG2-1.0.dev0.dist-info/WHEEL
+creating 'dist/EG2-1.0.dev0-py3-none-any.whl' and adding 'build/bdist.macosx-13-arm64/wheel' to it
+adding 'uc3m_travel/__init__.py'
+adding 'uc3m_travel/hotel_management_config.py'
+adding 'uc3m_travel/hotel_management_exception.py'
+adding 'uc3m_travel/hotel_manager.py'
+adding 'uc3m_travel/hotel_reservation.py'
+adding 'uc3m_travel/hotel_stay.py'
+adding 'uc3m_travel/attributes/__init__.py'
+adding 'uc3m_travel/attributes/attribute.py'
+adding 'uc3m_travel/attributes/attribute_arrival_date.py'
+adding 'uc3m_travel/attributes/attribute_credit_card.py'
+adding 'uc3m_travel/attributes/attribute_id_card.py'
+adding 'uc3m_travel/attributes/attribute_localizer.py'
+adding 'uc3m_travel/attributes/attribute_name_surname.py'
+adding 'uc3m_travel/attributes/attribute_numdays.py'
+adding 'uc3m_travel/attributes/attribute_phone_number.py'
+adding 'uc3m_travel/attributes/attribute_room_type.py'
+adding 'uc3m_travel/attributes/attribute_roomkey.py'
+adding 'uc3m_travel/storage/__init__.py'
+adding 'uc3m_travel/storage/checkout_json_store.py'
+adding 'uc3m_travel/storage/json_store.py'
+adding 'uc3m_travel/storage/reservation_json_store.py'
+adding 'uc3m_travel/storage/stay_json_store.py'
+adding 'EG2-1.0.dev0.dist-info/METADATA'
+adding 'EG2-1.0.dev0.dist-info/WHEEL'
+adding 'EG2-1.0.dev0.dist-info/namespace_packages.txt'
+adding 'EG2-1.0.dev0.dist-info/top_level.txt'
+adding 'EG2-1.0.dev0.dist-info/zip-safe'
+adding 'EG2-1.0.dev0.dist-info/RECORD'
+removing build/bdist.macosx-13-arm64/wheel

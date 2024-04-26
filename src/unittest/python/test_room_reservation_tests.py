@@ -5,7 +5,9 @@ import os.path
 import hashlib
 from os import remove
 from unittest import TestCase
+# pylint: disable=import-error
 from freezegun import freeze_time
+# pylint: disable=import-error
 from uc3m_travel import (JSON_FILES_PATH,
                          HotelManager,
                          HotelReservation,

@@ -3,10 +3,15 @@ from unittest import TestCase
 import os
 import hashlib
 import json
+# pylint: disable=import-error
 from freezegun import freeze_time
+# pylint: disable=import-error
 from uc3m_travel import HotelManager
+# pylint: disable=import-error
 from uc3m_travel import HotelManagementException
+# pylint: disable=import-error
 from uc3m_travel import JSON_FILES_PATH
+# pylint: disable=import-error
 from uc3m_travel import JSON_FILES_GUEST_ARRIVAL
 
 

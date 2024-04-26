@@ -1,12 +1,14 @@
-import unittest
+"""Test cases for the hotel manager singleton"""
 from unittest import TestCase
+# pylint: disable=import-error
 from uc3m_travel import HotelManager
+# pylint: disable=import-error
 from uc3m_travel.attributes.attribute_name_surname import NameSurname
 class MyTestCase(TestCase):
     """Test cases for the hotel manager singleton"""
     def test_singleton_hotel_manager(self):
         """Instance three singletons and check that
-        they are all the same instance (pointint to the same memory address)"""
+        they are all the same instance (pointing to the same memory address)"""
         manager1 = HotelManager()
         manager2 = HotelManager()
         manager3 = HotelManager()
