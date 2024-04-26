@@ -1,9 +1,11 @@
+"""Methods for checkout json management"""
 from datetime import datetime
 from uc3m_travel.storage.json_store import JsonStore
 from uc3m_travel.hotel_management_config import JSON_FILES_PATH
 from uc3m_travel.hotel_management_exception import HotelManagementException
 
 class CheckoutStoreJson(JsonStore):
+    """This module implements the JSON store for the checkout of a guest"""
     def save_checkout(self, checkout_data):
         """manages the checkout of a guest"""
         self.validate_roomkey(checkout_data)

@@ -1,13 +1,13 @@
+"""This module implements the JSON store for the checkin of a guest with a reservation"""
 from datetime import datetime
 from uc3m_travel.storage.json_store import JsonStore
 from uc3m_travel.hotel_management_config import JSON_FILES_PATH
 from uc3m_travel.hotel_management_exception import HotelManagementException
 from uc3m_travel.hotel_stay import HotelStay
 from uc3m_travel.hotel_reservation import HotelReservation
-from uc3m_travel.hotel_reservation import HotelReservation
-from freezegun import freeze_time
 
 class StayStoreJson(JsonStore):
+    """This module implements the JSON store for the checkin of a guest"""
     def save_checkin(self, checkin_data):
         """manages the arrival of a guest with a reservation"""
         input_list = self.read_json_not_empty(checkin_data, "guest_arrival")
@@ -20,9 +20,7 @@ class StayStoreJson(JsonStore):
             raise HotelManagementException("Error - Invalid Key in "
                                                "JSON") from key_error
 
-        # This will have to be changed when the JSON store classes are
-        # implemented
-        # new_reservation = HotelReservation.create_reservation_from_arrival(my_id_card,my_localizer)
+
         new_reservation = HotelReservation.create_reservation_from_arrival(my_id_card, my_localizer)
 
         # compruebo si hoy es la fecha de checkin
@@ -38,7 +36,7 @@ class StayStoreJson(JsonStore):
                                 localizer=my_localizer,
                                 roomtype=new_reservation.room_type)
 
-        #Ahora lo guardo en el almacen nuevo de checkin
+        # Ahora lo guardo en el almacen nuevo de checkin
         # escribo el fichero Json con todos los datos
         file_store = JSON_FILES_PATH + "store_check_in.json"
 
@@ -49,10 +47,9 @@ class StayStoreJson(JsonStore):
             if my_checkin.room_key == item["_HotelStay__room_key"]:
                 raise HotelManagementException ("ckeckin  ya realizado")
 
-        #añado los datos de mi reserva a la lista , a lo que hubiera
+        # añado los datos de mi reserva a la lista , a lo que hubiera
         room_key_list.append(my_checkin.__dict__)
 
         self.write_json(file_store, room_key_list)
 
         return my_checkin.room_key
-

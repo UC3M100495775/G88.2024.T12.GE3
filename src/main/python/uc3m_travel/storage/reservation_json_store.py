@@ -1,9 +1,12 @@
+"""Module to store reservations in json format"""
 from uc3m_travel.storage.json_store import JsonStore
 from uc3m_travel.hotel_management_config import JSON_FILES_PATH
 from uc3m_travel.hotel_management_exception import HotelManagementException
 
 class ReservationStoreJson(JsonStore):
+    """This module implements the JSON store for the reservations"""
     def save_reservation(self, reservation_data):
+        """manages the saving of a reservation of a guest in a json file"""
         file_store = JSON_FILES_PATH + "store_reservation.json"
 
         data_list = self.load_json_store(file_store)
@@ -23,5 +26,3 @@ class ReservationStoreJson(JsonStore):
         self.write_json(file_store, data_list)
 
         return reservation_data.localizer
-
-
