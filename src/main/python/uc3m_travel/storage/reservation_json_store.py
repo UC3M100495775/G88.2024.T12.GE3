@@ -23,3 +23,5 @@ class ReservationStoreJson(JsonStore):
         self.write_json(file_store, data_list)
 
         return reservation_data.localizer
+
+

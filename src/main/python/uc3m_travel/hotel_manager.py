@@ -12,6 +12,10 @@ from uc3m_travel.storage.json_store import JsonStore
 from uc3m_travel.storage.reservation_json_store import ReservationStoreJson
 from uc3m_travel.storage.stay_json_store import StayStoreJson
 from uc3m_travel.storage.checkout_json_store import CheckoutStoreJson
+from uc3m_travel.hotel_management_config import JSON_FILES_PATH
+from uc3m_travel.hotel_management_exception import HotelManagementException
+from datetime import datetime
+from freezegun import freeze_time
 
 class HotelManager:
     class __HotelManager:
@@ -37,6 +41,8 @@ class HotelManager:
             else:
                 raise ValueError("Invalid attribute")
 
+
+        ### MAIN METHODS ###
         # pylint: disable=too-many-arguments
         def room_reservation(self,
                              credit_card:str,
@@ -67,13 +73,18 @@ class HotelManager:
             reservation_store = ReservationStoreJson()
             return reservation_store.save_reservation(my_reservation)
 
+
         def guest_arrival(self, file_input:str)->str:
             checkin = StayStoreJson()
-            return checkin.save_chekin(file_input)
+            return checkin.save_checkin(file_input)
 
         def guest_checkout(self, room_key:str)->bool:
             checkout = CheckoutStoreJson()
             return checkout.save_checkout(room_key)
+
+        ### MAIN METHODS ###
+
+        ### CLASS METHODS ###
 
     __instance = None;
     def __new__(cls):
